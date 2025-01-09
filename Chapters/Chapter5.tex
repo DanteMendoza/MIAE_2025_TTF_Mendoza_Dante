@@ -1,0 +1,40 @@
+% Chapter Template
+
+\chapter{Conclusiones} % Main chapter title
+
+\label{Chapter5} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
+
+Este capítulo presenta los resultados obtenidos a lo largo del trabajo realizado, se destacan las herramientas adquiridas durante la carrera que resultaron fundamentales para su implementación. Además, se proponen ideas que puedan mejorar el desarrollo actual.
+
+%----------------------------------------------------------------------------------------
+
+%----------------------------------------------------------------------------------------
+%	SECTION 1
+%----------------------------------------------------------------------------------------
+
+\section{Conclusiones generales }
+
+Las conclusiones generales de este proyecto subrayan tanto los aportes y logros en el desarrollo del sistema como los desafíos que limitaron algunas pruebas. El trabajo se centró en el diseño y construcción del nodo sensor y el firmware, lo que sentó las bases de un sistema que permite la recolección de datos visuales y ambientales en plantaciones de kiwi. A través de este desarrollo, se logró implementar un sistema robusto y adaptable, cuyo firmware proporciona un control preciso y secuencial de cada módulo, como sensores y periféricos críticos para el monitoreo de condiciones en el campo.
+
+La codificación del sistema fue una tarea clave y se completó con éxito, al constatar una interacción eficiente entre el microcontrolador STM32 y cada componente del nodo sensor. Este avance permitió asegurar la adquisición de datos en tiempo real y el almacenamiento seguro en la tarjeta SD, lo que constituye un paso esencial para el procesamiento y análisis posterior de las condiciones de la plantación. La integración de sensores de temperatura, humedad y distancia, junto con una cámara para capturar imágenes, resalta la modularidad y escalabilidad del sistema. 
+
+A pesar de los logros en la etapa de diseño y desarrollo, fue imposible realizar pruebas de campo debido a dificultades logísticas y problemas en la disponibilidad de cosechas. La ausencia de estas pruebas impide contar con datos que permitan validar el desempeño del sistema en condiciones reales.
+
+En conclusión, este trabajo constituye un punto de partida sólido y bien estructurado para el monitoreo automatizado de cultivos mediante sensores y visión por computadora, con bases para futuras investigaciones y mejoras en el área de la agricultura de precisión. La implementación del firmware y la integración de los distintos módulos permiten obtener datos de alta calidad y almacenarlos eficazmente, lo que contribuye a un perfil detallado de las condiciones ambientales en la plantación. Las etapas siguientes deberán enfocarse en la recolección de datos en campo y en la integración de análisis avanzados que, a partir de la información recolectada, permitan tomar decisiones informadas y optimizar la productividad en las plantaciones de kiwi.
+
+%----------------------------------------------------------------------------------------
+%	SECTION 2
+%----------------------------------------------------------------------------------------
+\section{Trabajos futuros}
+
+Para etapas posteriores de este proyecto, el desarrollo de este sistema ofrece numerosas oportunidades de mejora y expansión, que optimizarán sus capacidades, precisión y aplicabilidad en diversos contextos agrícolas. Un objetivo clave para futuras etapas es implementar y entrenar un modelo de detección de objetos que aproveche las imágenes capturadas por el sistema. Esta implementación permitirá automatizar el proceso de conteo de frutos y su análisis en plantaciones de kiwi, para facilitar una evaluación precisa de la producción y la eficiencia en el control de cosechas.
+
+El modelo de detección de objetos requerirá ajustes y pruebas exhaustivas para su adaptación a las condiciones de cada plantación, para garantizar que las imágenes capturadas sean adecuadamente interpretadas por el sistema. La elección del modelo de aprendizaje profundo y su entrenamiento con datos específicos del entorno del kiwi serán esenciales para obtener resultados precisos. Este paso permitirá incorporar algoritmos avanzados para reconocer patrones, detectar variaciones en la calidad del fruto o su estado de madurez, y generar alertas ante la identificación de condiciones anómalas.
+
+Además, se proyecta evaluar la aplicación del sistema en otros tipos de plantaciones. La validación de las imágenes en diferentes entornos agrícolas permitirá comprobar si el sistema puede adaptarse a condiciones y características de cultivos distintos al kiwi. Estos estudios comparativos serán útiles para identificar ajustes necesarios en los sensores o en el firmware y así optimizar la calidad de las imágenes y asegurar un rendimiento homogéneo en distintos tipos de cultivo.
+
+Otra línea de desarrollo futuro incluye la implementación de una función de captura de video, en lugar de imágenes fijas. Esto brindaría un flujo continuo de información, lo que facilitaría un análisis en tiempo real y podría mejorar la detección de frutos o condiciones ambientales cambiantes. La transición de imágenes a video también exigiría ajustes en el almacenamiento de datos y en el procesamiento en tiempo real, por lo que sería necesario considerar la capacidad de procesamiento del microcontrolador y la posibilidad de incorporar una tarjeta de memoria de mayor capacidad o velocidad.
+
+En resumen, los trabajos futuros se orientarán hacia la ampliación de la funcionalidad del sistema mediante la integración de un modelo de detección de objetos, la adaptación del nodo a otros cultivos y la captura de video en tiempo real. Estos avances fortalecerán el sistema, al hacerlo más versátil y eficiente para las necesidades de la agricultura moderna y permitir su uso en una variedad más amplia de aplicaciones agrícolas.
+
+\newpage
