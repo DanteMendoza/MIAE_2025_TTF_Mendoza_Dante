@@ -1,5 +1,8 @@
-# Plantilla memoria
 
-Plantilla para la elaboración de la Memoria del Trabajo Final de cualquiera de las Carreras de Especialización o Maestrías que se dictan en el Laboratorio de Sistemas Embebidos en la Facultad de Ingeniería de la UBA.  
+# MIAE_2025_TTF_Mendoza_Dante
 
-Leer [Instructivo para utilizar la plantilla en Overleaf](https://github.com/TTFA-TTFB/Plantilla-para-memoria/blob/main/Instructivo%20Overleaf.md).
+Repositorio de la tesis de la FIUBA MIAE 2025.
+
+## Autor
+
+- HECTOR DANTE MENDOZA
