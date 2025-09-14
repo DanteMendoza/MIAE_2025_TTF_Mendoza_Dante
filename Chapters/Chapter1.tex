@@ -32,46 +32,6 @@ Actualmente, el volumen de cosecha se estima al contar los frutos por unidad de 
 
 Es en este contexto, el prototipo desarrollado permite recolectar imágenes de la plantación con el fin de realizar una detección de objetos. De esta forma, se obtiene una estimación de los frutos para facilitar la toma de decisiones operativas y estratégicas \citep{Mendoza2021}.
 
-
-
-
-
-\subsection{Especificaciones funcionales del prototipo}
-\label{requerimientos_del_sistema}
-
-Se detallan los requerimientos del prototipo, con las funcionalidades y características implementadas.
-
-\begin{enumerate}
-	\item Funcionalidades principales del sistema:
-		\begin{enumerate}
-			\item El sistema registró la temperatura del ambiente.
-			\item El sistema registró la humedad del ambiente.
-			\item El sistema informó el espacio disponible en la tarjeta microSD.
-            \item El sistema informó la cantidad de fotografías almacenadas.
-            \item El sistema detectó los frutos en las imágenes capturadas.
-            \item El sistema informó el volumen estimado de cosecha.
-		\end{enumerate}
-	\item Características adicionales del sistema:
-		\begin{enumerate}
-			\item El sistema resultó escalable, lo que permite la incorporación de nuevos sensores en el futuro.
-			\item El firmware estuvo modularizado.
-            \item El firmware se desarrolló sobre un sistema operativo de tiempo real.
-		\end{enumerate}
-    \item Funcionalidades de la interfaz gráfica en la pantalla LCD:
-		\begin{enumerate}
-			\item La pantalla mostró los valores de humedad y temperatura.
-			\item La pantalla mostró el espacio disponible en la tarjeta microSD.
-            \item La pantalla mostró la cantidad de fotografías almacenadas.
-            \item La información en pantalla se actualizó cada 5 segundos.
-		\end{enumerate}
-    \item Funcionalidades de interoperabilidad:
-		\begin{enumerate}
-			\item Las fotografías se almacenaron en formato de archivo JPG.
-			\item Las imágenes capturadas alcanzaron una resolución mínima de 640 × 480 píxeles.
-            \item Cada imagen guardada no superó un tamaño de 10 MB.
-		\end{enumerate}
-\end{enumerate}
-
 %----------------------------------------------------------------------------------------
 
 \section{Estado del arte}
@@ -80,7 +40,7 @@ Durante la etapa de investigación del trabajo, se realizó una búsqueda de pro
 
 \subsection{Fruitometry}
 
-La tecnología de estimación digital de cultivos (DCE) de Fruitometry que se muestra en la figura \ref{fig:Fruitometry}, permite a los productores y administradores de huertos observar el desempeño de su cultivo durante la temporada de cosecha. Esto ayuda a maximizar los rendimientos, reducir los costos de cultivo y proporcionar estimaciones antes de la recolección.
+La tecnología de estimación digital de cultivos (por su sigla del inglés, DCE) de Fruitometry que se muestra en la figura \ref{fig:Fruitometry}, permite a los productores y administradores de huertos observar el desempeño de su cultivo durante la temporada de cosecha. Esto ayuda a maximizar los rendimientos, reducir los costos de cultivo y proporcionar estimaciones antes de la recolección.
 
 Las unidades de campo, montadas en cuatriciclos y vehículos todo terreno, contienen una variedad de cámaras y sensores que capturan información sobre la densidad de cultivos y las características del huerto. Para cada escaneo de la plantación, se toman miles de fotografías. Luego, estas se procesan en tiempo real mediante el motor de inteligencia artificial con aprendizaje profundo para identificar brotes, flores, frutos y características de interés.
 
@@ -95,7 +55,7 @@ Este conjunto de datos se utiliza para crear un mapa de calor de densidad resumi
 \end{figure}
 \vspace{1cm}
 
-\footnotetext{Imagen tomada de \url{https://fruitometry.com/about-fruitometry/}}
+\footnotetext{Imagen tomada de \url{https://fruitometry.com/about-fruitometry/.}}
 
 \subsection{Detección de frutos en imágenes de campo}
 
@@ -114,14 +74,11 @@ Este sistema de visión artificial resultó ser eficaz en la detección de difer
 
 \vspace{1cm}
 \footnotetext{Imagen tomada de "Kiwifruit detection in field
-images using Faster R-CNN with VGG16"}
+images using Faster R-CNN with VGG16".}
 
-\newpage
 \subsection{Calibrado de frutas}
 
 Existen diversos productos comerciales que aplican la detección de objetos para llevar a cabo procesos de clasificación y calibrado de frutas u hortalizas. Estas máquinas mostradas en la figura \ref{fig:calibrado_de_frutas}, estan diseñadas para grandes cadenas de distribución, automatizan la selección y el empaquetado de los productos, lo que incrementa la eficiencia y reduce los tiempos operativos. El sistema funciona a través de una cinta transportadora equipada con cámaras, que capturan imágenes en tiempo real de cada elemento \citep{WEBSITE:Unitec2024}.
-
-Además de identificar cada objeto, las cámaras registran una serie de parámetros importantes, como el diámetro, la longitud, la forma y, en algunos casos, el color. Estos datos se procesan con algoritmos de visión artificial, que clasifican los productos según criterios preestablecidos de calidad.
 
 \vspace{1cm}
 \begin{figure}[htbp]
@@ -132,7 +89,9 @@ Además de identificar cada objeto, las cámaras registran una serie de parámet
 \end{figure}
 \vspace{1cm}
 
-\footnotetext{Imagen tomada de \url{https://tongengineering.com/product/maf-roda-weight-grading/}}
+\footnotetext{Imagen tomada de \url{https://tongengineering.com/product/maf-roda-weight-grading/.}}
+
+Además de identificar cada objeto, las cámaras registran una serie de parámetros importantes, como el diámetro, la longitud, la forma y, en algunos casos, el color. Estos datos se procesan con algoritmos de visión artificial, que clasifican los productos según criterios preestablecidos de calidad.
 
 \subsection{Estimación de cosechas mediante imágenes satelitales y drones}
 
@@ -151,17 +110,17 @@ Por otro lado, la ventaja de estas soluciones radica en su capacidad de escalar 
 \end{figure}
 \vspace{1cm}
 
-\footnotetext{Imagen tomada de "Monitoreo de cultivos mediante el uso de sensores remotos montados en drones"}
+\footnotetext{Imagen tomada de "Monitoreo de cultivos mediante el uso de sensores remotos montados en drones".}
 
 %----------------------------------------------------------------------------------------
 
 \section{Objetivo y alcances}
 
-En la siguiente sección se describen los objetivos del proyecto, los alcances y los aspectos no considerados en el desarrollo del prototipo.
+En esta sección se describen los objetivos del proyecto, los alcances y los aspectos no considerados en el desarrollo del prototipo.
 
 \subsection{Objetivo}
 
-El objetivo del presente trabajo es el desarrollo e implementación de un prototipo que permita contabilizar el rendimiento esperado de un lote de producción de frutos en forma temprana, a través del procesamiento de imágenes.
+El objetivo del presente trabajo es el desarrollo e implementación de un prototipo que permite contabilizar el rendimiento esperado de un lote de producción de frutos en forma temprana, a través del procesamiento de imágenes.
 
 \subsection{Alcances contemplados}
 El alcance establecido para el trabajo incluyó las siguientes tareas:
@@ -172,15 +131,6 @@ El alcance establecido para el trabajo incluyó las siguientes tareas:
 \item Desarrollo del modelo de detección de objetos.
 \item Recolección de imágenes para el proceso de entrenamiento.
 \item Establecer como fruto objetivo  de detección el kiwi.
-\end{itemize}
-
-\subsection{Aspectos no incluidos en el prototipo}
-\label{Aspectos_no_incluidos_en_el_prototipo}
-El alcance establecido para el trabajo no incluye las siguientes tareas:
-
-\begin{itemize}
-\item Pruebas de funcionamiento en la plantación.
-\item Desarrollo de la carcasa contenedora del prototipo.
 \end{itemize}
 
 %----------------------------------------------------------------------------------------
