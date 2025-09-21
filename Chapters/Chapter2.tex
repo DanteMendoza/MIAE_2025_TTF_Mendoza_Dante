@@ -45,21 +45,6 @@ En esta sección se describen en detalle los componentes de hardware y software 
 
 La placa STM32 Nucleo-F429ZI, posee un núcleo ARM Cortex-M4. Esta placa ofrece una plataforma flexible para desarrollar aplicaciones embebidas, con una amplia variedad de interfaces y periféricos, como ADC, DAC, GPIO, SPI, I2C, USART, entre otros. Además, cuenta con compatibilidad con los ecosistemas Arduino y ST Morpho, lo que facilita la expansión y el prototipado rápido. Es ideal para proyectos que requieren procesamiento en tiempo real, gestión de múltiples tareas y alto rendimiento \citep{WEBSITE:Itt2024}.
 
-Características:
-\begin{itemize}
-\item STM32F429ZIT6 en paquete LQFP144.
-\item CPU ARM® Cortex®-M4 de 32 bits con FPU.
-\item Frecuencia máxima de CPU de 180 MHz.
-\item VDD de 1,8 V a 3,6 V.
-\item Flash de 2048 KB.
-\item GPIO (114) con capacidad de interrupción externa.
-\item Controlador DMA de 16 flujos con FIFO y compatibilidad con ráfagas.
-\item USB 2.0 OTG SA.
-\item I2C.
-\item SPI.
-\item USART/UART.
-\end{itemize}
-
 \subsection{Sensor de temperatura y humedad DHT11}
 \label{subsec:dht11}
 
@@ -68,7 +53,7 @@ Este dispositivo, se utiliza para medir temperatura y humedad en ambientes contr
 \subsection{Display LCD}
 \label{subsec:DisplayLCD}
 
-Esta pantalla, capaz de mostrar hasta 16 caracteres en 2 filas, Se utiliza en proyectos de electrónica y sistemas embebidos debido a su simplicidad y bajo costo. Cada carácter se forma a partir de una matriz de puntos de 5 x 8 píxeles, lo que permite visualizar letras, números y símbolos. El display es compatible con microcontroladores y microprocesadores, y se controla mediante interfaces paralelas o serie. Resulta ideal para mostrar información básica, como datos de sensores, mensajes o indicadores de estado en tiempo real \citep{WEBSITE:lcd2024}.
+Esta pantalla, capaz de mostrar hasta 16 caracteres en 2 filas, Se utiliza en proyectos de electrónica y sistemas embebidos debido a su simplicidad. Cada carácter se forma a partir de una matriz de puntos de 5 x 8 píxeles, lo que permite visualizar letras, números y símbolos. El display es compatible con microcontroladores y microprocesadores, y se controla mediante interfaces paralelas o serie. Resulta ideal para mostrar información básica, como datos de sensores, mensajes o indicadores de estado en tiempo real \citep{WEBSITE:lcd2024}.
 
 \subsection{Cámara Ov7670}
 \label{subsec:camara}
@@ -87,32 +72,21 @@ Este módulo compacto de captura de imágenes, mostrado en la figura \ref{fig:ca
 \subsection{Sensor ultrasónico HC-SR04}
 \label{subsec:hcsr04}
 
-Este dispositivo, mostrado en la figura \ref{fig:hcsr2024}, se utiliza para medir distancias con precisión en proyectos de robótica, sistemas embebidos y automatización. Emite ondas ultrasónicas que se reflejan en objetos cercanos y luego las capta el sensor. El tiempo que tarda la señal en regresar permite calcular la distancia al objeto. El HC-SR04 ofrece un rango de medición de 2 cm a 4 m, con una precisión de aproximadamente 3 mm. Se integra fácilmente con microcontroladores como Arduino o STM32 mediante un sistema de disparo y recepción de señal. Es ideal para aplicaciones como evitar obstáculos, medir niveles de líquido y sistemas de detección de proximidad \citep{WEBSITE:hcsr2024}.
-
-\begin{figure}[htbp]
-	\centering
-	\includegraphics[width=.5\textwidth]{./Figures/hcsr04.png}
-	\caption{Sensor ultrasónico HC-SR04\protect\footnotemark.}
-	\label{fig:hcsr2024}
-\end{figure}
-
-\footnotetext{Imagen tomada de \url{https://www.todomicro.com.ar/modulos/81-sensor-ultrasonico-ultrasonido-hc-sr04-arduino-pic-robotica.html.}}
+Este dispositivo, se utiliza para medir distancias en proyectos de robótica, sistemas embebidos y automatización. Emite ondas ultrasónicas que se reflejan en objetos cercanos y luego las capta el sensor. El tiempo que tarda la señal en regresar permite calcular la distancia al objeto. El HC-SR04 ofrece un rango de medición de 2 cm a 4 m, con una precisión de aproximadamente 3 mm. Se integra fácilmente con microcontroladores como Arduino o STM32 mediante un sistema de disparo y recepción de señal. Es ideal para aplicaciones como evitar obstáculos, medir niveles de líquido y sistemas de detección de proximidad \citep{WEBSITE:hcsr2024}.
 
 \section{Herramientas de software y testing utilizados}
 
-Las herramientas de software seleccionadas para este trabajo fueron fundamentales para el desarrollo y las pruebas del prototipo. A continuación se describen en detalle las características principales y los casos de uso de cada una.
+Las herramientas de software seleccionadas para este trabajo fueron fundamentales para el desarrollo y las pruebas de SIVIC. A continuación se describen en detalle las características principales y los casos de uso de cada una.
 
 \subsection{STM32 CubeIDE}
 \label{subsec:stm32}
 
-El sistema STM32 CubeIDE es un entorno de desarrollo integrado (IDE) creado por STMicroelectronics para trabajar con microcontroladores STM32. Basado en Eclipse, STM32 CubeIDE permite a los desarrolladores escribir, compilar y depurar código en lenguajes como C y C++ y por lo tanto facilita el desarrollo de aplicaciones embebidas. También integra herramientas como STM32CubeMX, que configura los periféricos del microcontrolador y genera código automáticamente. Estas  características contribuyen a reducir los errores y a acelerar el proceso de desarrollo. STM32 CubeIDE es compatible con sistemas operativos como Windows, macOS y Linux, y soporta una amplia gama de microcontroladores de la familia STM32, lo que lo convierte en una opción flexible para proyectos de sistemas embebidos \citep{WEBSITE:stm32}.
+El sistema STM32 CubeIDE es un entorno de desarrollo integrado (por su sigla del inglés, IDE) creado por STMicroelectronics para trabajar con microcontroladores STM32. Basado en Eclipse, STM32 CubeIDE permite a los desarrolladores escribir, compilar y depurar código en lenguajes como C y C++ y por lo tanto facilita el desarrollo de aplicaciones embebidas. También integra herramientas como STM32CubeMX, que configura los periféricos del microcontrolador y genera código automáticamente \citep{WEBSITE:stm32}.
 
 \subsection{Sistema operativo FreeRTOS}
 \label{subsec:FreeRTOS}
 
-Es un sistema operativo en tiempo real (RTOS) de código abierto, ampliamente utilizado en el desarrollo de aplicaciones embebidas. Diseñado para microcontroladores y sistemas de baja potencia, FreeRTOS ofrece un \textit{kernel} ligero y eficiente para gestionar tareas concurrentes de manera óptima. Soporta características clave como multitarea, gestión de memoria, sincronización entre tareas y temporización precisa, lo que lo convierte en una solución ideal para aplicaciones que requieren control preciso del tiempo y recursos limitados.
-
-Además, FreeRTOS es compatible con una amplia variedad de arquitecturas de microcontroladores, incluidos los STM32. Cuenta con una extensa comunidad y soporte comercial a través de \textit{partners} como Amazon Web Services (AWS), que ofrece una versión ampliada llamada FreeRTOS IoT. Gracias a su escalabilidad y flexibilidad, FreeRTOS es una opción popular en proyectos que van desde dispositivos portátiles hasta sistemas industriales complejos \citep{WEBSITE:freertos}.
+Es un sistema operativo en tiempo real (RTOS) de código abierto, ampliamente utilizado en el desarrollo de aplicaciones embebidas. Diseñado para microcontroladores y sistemas de baja potencia, FreeRTOS ofrece un \textit{kernel} ligero y eficiente para gestionar tareas concurrentes de manera óptima. Soporta características clave como multitarea, gestión de memoria, sincronización y temporización precisa, lo que lo convierte en una solución ideal para aplicaciones que requieren control del tiempo y recursos limitados \citep{WEBSITE:freertos}.
 
 \subsection{Pruebas en CEEDLING}
 \label{subsec:CEEDLING}
@@ -121,7 +95,23 @@ Es una herramienta de testing para proyectos en lenguaje C, diseñada para facil
 
 Ceedling integra varias herramientas esenciales para el testing, como CMock, un generador de mocks que simula dependencias y facilita el aislamiento de unidades de código durante las pruebas. Además, utiliza Unity, un framework de pruebas unitarias para C, que ofrece una serie de aserciones y macros para verificar el comportamiento del código.
 
-La configuración y ejecución de pruebas con Ceedling se realizan a través de un archivo de configuración, lo que permite una integración fluida en el proceso de desarrollo. La herramienta soporta la ejecución de pruebas en diferentes entornos, genera informes detallados de cobertura de código y facilita la identificación de errores y defectos en el software \citep{WEBSITE:CEEDLING}.
+Además, soporta la ejecución de pruebas en diferentes entornos, genera informes de cobertura de código y facilita la identificación de errores y defectos en el software \citep{WEBSITE:CEEDLING}.
+
+\subsection{Etiquetado de imágenes}
+\label{subsec:etiquetado}
+
+El proceso de etiquetado de imágenes resulta fundamental para la construcción de conjuntos de datos en visión por computadora. Consiste en asignar información semántica a cada imagen, de manera que un modelo de aprendizaje automático pueda reconocer y clasificar objetos de interés en futuras inferencias. Entre las herramientas más utilizadas en este ámbito se destacan LabelImg y Roboflow.  
+
+LabelImg es un programa de código abierto diseñado para generar anotaciones en imágenes mediante cuadros delimitadores (\textit{bounding boxes}). Estas anotaciones permiten indicar al modelo qué objeto se encuentra en cada región de la imagen, lo que constituye la base del entrenamiento supervisado. La herramienta es compatible con sistemas operativos Windows, Linux y macOS, y exporta los resultados en formatos ampliamente utilizados, como Pascal VOC (XML) o YOLO (TXT) \citep{WEBSITE:LabelImg}. Su uso resulta especialmente apropiado cuando se dispone de un conjunto propio de imágenes y se requiere preparar los datos para entrenar un modelo desde cero.  
+
+Roboflow, por otra parte, ofrece una plataforma en línea que facilita la gestión integral de conjuntos de datos para visión por computadora. Permite cargar imágenes, generar anotaciones directamente desde el navegador y aplicar técnicas de aumento de datos (\textit{data augmentation}), tales como rotación, recorte o modificación del brillo. Además, la plataforma admite la exportación de los conjuntos de datos en múltiples formatos estándar (YOLO, TensorFlow, COCO, entre otros) \citep{WEBSITE:Roboflow}. Roboflow también brinda la posibilidad de entrenar modelos en la nube y realizar pruebas preliminares, lo que la convierte en una solución flexible y accesible para proyectos de distinta escala.  
+
+\subsection{Modelo de visión por computadora}
+\label{subsec:YOLO}
+
+El modelo YOLO (\textit{You Only Look Once}) es un algoritmo avanzado de visión por computadora utilizado en la detección y localización de objetos en imágenes y secuencias de video. Su funcionamiento consiste en dividir la imagen en una cuadrícula y, en una única pasada de la red neuronal, predecir simultáneamente las coordenadas de los cuadros delimitadores (\textit{bounding box}) y las probabilidades de pertenencia a una clase específica (por ejemplo, persona, automóvil o animal) \citep{WEBSITE:YOLO}.
+
+A diferencia de otros enfoques basados en etapas secuenciales de detección y clasificación, YOLO ejecuta ambos procesos de manera conjunta, lo que le confiere alta eficiencia computacional y una velocidad de procesamiento mayor. Estas características lo han consolidado como una herramienta de referencia en tareas que requieren análisis en tiempo real, tales como la conducción autónoma, los sistemas inteligentes de videovigilancia y la navegación asistida por drones.
 
 \section{Protocolos de comunicación}
 
