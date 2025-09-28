@@ -3,13 +3,163 @@
 \chapter{Ensayos y resultados} % Main chapter title
 
 \label{Chapter4} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
-Todos los capítulos deben comenzar con un breve párrafo introductorio que indique cuál es el contenido que se encontrará al leerlo.  La redacción sobre el contenido de la memoria debe hacerse en presente y todo lo referido al proyecto en pasado, siempre de modo impersonal.
+En este capítulo se describen las pruebas realizadas para validar el hardware y software desarrollados. Se utilizaron herramientas de automatización de pruebas y hardware externo. Esto permitió contrastar y analizar los datos capturados por cada sensor, con el objetivo de verificar la precisión y robustez del sistema.
 
 %----------------------------------------------------------------------------------------
 %	SECTION 1
 %----------------------------------------------------------------------------------------
 
-\section{Pruebas funcionales del hardware}
-\label{sec:pruebasHW}
+\section{Pruebas unitarias del firmware}
+\label{sec:pruebas_unitarias}
 
-La idea de esta sección es explicar cómo se hicieron los ensayos, qué resultados se obtuvieron y analizarlos.
+En esta sección se presentan pruebas unitarias para validar las funcionalidades clave del software, lo que asegura la precisión y estabilidad de cada componente. Durante la implementación de los drivers, se aplicó la metodología de desarrollo Test-Driven Development (TDD) \citep{ieee2023}.
+
+Esta metodología establece la creación de pruebas unitarias antes de cada módulo y garantiza que el código cumpla con los requerimientos especificados desde las primeras etapas.
+
+Para el desarrollo de pruebas automáticas, se empleó Ceedling, una herramienta robusta que facilitó la creación, ejecución y gestión de pruebas, lo que asegura una verificación consistente de cada funcionalidad.
+
+\subsection{Prueba de cámara Ov7670}
+
+La validación del driver de la cámara Ov7670 fue fundamental para garantizar que el sistema capturara imágenes con precisión y fiabilidad, al cumplir los requisitos en términos de resolución y capacidad de captura en tiempo real.
+
+La prueba incluyó aspectos clave, como la inicialización de la cámara, la captura de imágenes en diferentes resoluciones y la transmisión de datos al proceso principal para su almacenamiento y análisis.
+
+Durante las pruebas, se evaluaron distintas configuraciones de la cámara Ov7670, para verificar los ajustes de resolución y formato de imagen. La cobertura obtenida en las pruebas reflejó la capacidad del driver para mantener la estabilidad y calidad en la captura de imágenes incluso en condiciones de carga intensa. Además, los informes de prueba permitieron identificar y solucionar fallas menores, como errores en la sincronización del módulo de captura o posibles pérdidas de datos en resoluciones altas, lo que asegura un flujo constante y sin interrupciones. La figura \ref{fig:test_ov7670_camera}
+muestra los resultados de las pruebas realizadas.
+
+Otro aspecto evaluado fue la integración del driver con el sistema general. Este proceso resultó crucial para validar la robustez del sistema ante interrupciones inesperadas.
+
+\vspace{1cm}
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.7\textwidth, height=0.3\textheight]{./Figures/test_ov7670_camera.png}
+	\caption{Test realizado a la cámara Ov7670.}
+	\label{fig:test_ov7670_camera}
+\end{figure}
+
+\vspace{1cm}
+
+\subsection{Prueba del sensor ultrasónico HC-SR04}
+
+El proceso de prueba abarcó varias funciones clave del driver, como la inicialización del sensor, el envío de pulsos de activación, y la recepción y procesamiento de los ecos de respuesta que miden la distancia. Ceedling ejecutó pruebas unitarias para cada una de estas funciones, lo que generó informes detallados sobre la precisión y consistencia de los resultados. Este enfoque garantizó que el sensor ofreciera mediciones confiables y respondiera adecuadamente ante diferentes distancias, desde rangos cortos hasta los límites efectivos del sensor.
+
+Otra área de prueba clave fue la integración del sensor con el sistema general y la manera en que el driver del HC-SR04 gestionaba las interrupciones durante la medición de distancias. Esta verificación fue esencial para confirmar que el sistema mantuviera un flujo de datos continuo.
+
+Finalmente, se realizaron pruebas para analizar el manejo de errores en el driver, especialmente en situaciones en las que el sensor no recibía respuesta de eco o detectaba obstrucciones inesperadas. Se validó que el sistema reaccionara correctamente ante estas situaciones. La figura \ref{fig:test_hc_sr04_sensor} muestra los resultados de las pruebas realizadas.
+
+\vspace{1cm}
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.7\textwidth, height=0.3\textheight]{./Figures/test_hc_sr04_sensor.png}
+	\caption{Test realizado al sensor ultrasónico HC-SR04.}
+	\label{fig:test_hc_sr04_sensor}
+\end{figure}
+
+\vspace{1cm}
+
+\subsection{Prueba del lector de tarjetas SD}
+
+Las pruebas iniciales evaluaron las operaciones de escritura y lectura, funciones esenciales para el almacenamiento continuo de datos capturados por los sensores. Cada operación fue probada con diferentes tamaños de archivos, para simular diversos escenarios de uso, desde pequeñas cantidades de datos hasta archivos de mayor tamaño, para determinar la capacidad del driver para manejar un flujo de datos sostenido. La figura \ref{fig:test_sd_card_reader} muestra los resultados de las pruebas realizadas.
+
+\vspace{1cm}
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.7\textwidth, height=0.3\textheight]{./Figures/test_sd_card_reader.png}
+	\caption{Test realizado al lector de tarjetas SD.}
+	\label{fig:test_sd_card_reader}
+\end{figure}
+
+\vspace{1cm}
+
+Además, se evaluaron las capacidades del driver para detectar y gestionar tarjetas SD con diferentes formatos. La lectura y escritura en tarjetas formateadas en sistemas FAT32 y exFAT permitió verificar la flexibilidad del driver y su compatibilidad con distintos tipos de almacenamiento. Este aspecto fue crítico, pues garantiza que el sistema se adapte a diversas tarjetas sin requerir reconfiguraciones manuales.
+
+Se simularon problemas comunes, como la extracción inesperada de la tarjeta, errores en la escritura y fallos de inicialización. Esto permitió observar cómo el driver respondía ante estos problemas, para verificar que el sistema registrará la interrupción o emitiera alertas adecuadas sin comprometer la estabilidad del sistema.
+
+\subsection{Prueba de integración de drivers}
+
+La prueba de integración de drivers tuvo como objetivo evaluar el desempeño conjunto de los componentes desarrollados y comprobar su funcionamiento de manera coordinada y sin interferencias. Esta prueba incluyó los drivers del sensor de temperatura y humedad DHT11, el sensor ultrasónico HC-SR04, la cámara OV7670, el display LCD y el lector de tarjetas SD, los que operaron simultáneamente para asegurar una respuesta del sistema.
+
+En el proceso, cada driver fue evaluado en condiciones similares a las de su operación final, para verificar la capacidad del sistema. Los resultados indicaron que todos los drivers se integraron correctamente, sin dificultades en los ensayos realizados, con una sincronización adecuada entre los distintos módulos. La figura \ref{fig:test_integrated_drivers} muestra los resultados obtenidos.
+
+\vspace{1cm}
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.7\textwidth, height=0.3\textheight]{./Figures/test_integrated_drivers.png}
+	\caption{Test de integración de drivers.}
+	\label{fig:test_integrated_drivers}
+\end{figure}
+
+\vspace{1cm}
+
+Las pruebas confirmaron que el sistema responde adecuadamente a las demandas de funcionamiento en conjunto, sin comprometer la velocidad ni la precisión de las mediciones y salidas visuales.
+
+\section{Pruebas funcionales del hardware}
+\label{pruebas_funcionales_hardware}
+
+Esta sección expone los ensayos realizados para evaluar la precisión y confiabilidad de los sensores integrados en el sistema. El propósito principal es contrastar las mediciones del sensor de temperatura y humedad DHT11, el sensor ultrasónico HC-SR04 y la cámara Ov7670 con las obtenidas por otros dispositivos o herramientas.
+
+\subsection{Evaluación de precisión en temperatura y humedad del sensor DHT11}
+
+Para determinar la precisión del sensor DHT11 en la medición de temperatura y humedad, se realizaron pruebas comparativas con un termómetro higrómetro de laboratorio como referencia. Esta prueba tuvo lugar durante un periodo de dos horas, con mediciones cada 15 minutos a partir del mediodía. La prueba se llevó a cabo en un entorno controlado, con una temperatura base aproximada de 25 ° C.
+
+En cada intervalo de tiempo, se registraron los datos de temperatura y humedad captados por ambos dispositivos, lo que permitió identificar las diferencias entre el sensor DHT11 y el termómetro higrómetro. Se observó que el DHT11 reportó variaciones de entre 1 y 2 puntos respecto a la referencia de laboratorio, tanto en temperatura como en humedad, lo que muestra una desviación mínima. Los resultados de esta comparación se presentan en la tabla \ref{tab:DHT11_comparacion}.
+
+\vspace{1cm}
+
+\begin{table}[h]
+    \centering
+    \caption[Comparación de mediciones de temperatura y humedad]{Comparación de mediciones de temperatura y humedad.}
+    \begin{tabularx}{\textwidth}{l X X X X X X X}  % Cambia el ancho de la última columna
+        \toprule
+        \textbf{Hora} & \textbf{Temp. DHT11} & \textbf{Temp. higrómetro} & \textbf{Dif. temp.} & \textbf{Hum. DHT11} & \textbf{Hum. higrómetro} & \textbf{Dif. hum.} \\
+        \midrule
+        12:00 PM & 25.5 & 25.0 & +0.5 & 47 & 49 & -2\\		
+        12:15 PM & 26.0 & 25.5 & +0.5 & 46 & 48	& -2\\
+        12:30 PM & 26.3 & 26.0 & +0.3 & 48 & 49 & -1\\
+        12:45 PM & 26.5 & 26.2 & +0.3 & 49 & 50 & -1\\
+        01:00 PM & 26.7 & 26.5 & +0.2 & 50 & 52 & -2\\
+        01:15 PM & 27.0 & 26.8 & +0.2 & 51 & 53 & -2\\
+        01:30 PM & 27.2 & 27.0 & +0.2 & 52 & 54 & -2\\
+        01:45 PM & 27.3 & 27.1 & +0.2 & 52 & 54 & -2\\
+        02:00 PM & 27.5 & 27.3 & +0.2 & 53 & 55 & -2\\
+        \bottomrule
+    \end{tabularx}
+    \label{tab:DHT11_comparacion}
+\end{table}
+
+\vspace{1cm}
+
+\subsection{Análisis de precisión en medición de distancia con el sensor ultrasónico HC-SR04}
+
+El objetivo de esta prueba fue evaluar la precisión del sensor ultrasónico HC-SR04 en la medición de distancias. Se establecieron seis puntos de referencia a distintas distancias de una muestra de una planta de kiwi: 50 centímetros, 1 metro, 1.5 metros, 2 metros, 2.5 metros y 3 metros. Las mediciones de referencia se obtuvieron con una cinta métrica convencional, y luego se registraron las lecturas del sensor HC-SR04 para cada posición.
+
+Los resultados evidencian que el sensor HC-SR04 presenta una gran precisión en distancias cortas, al calcular sin errores la medida de 50 centímetros. Sin embargo, conforme aumenta la distancia, se observan diferencias leves que van de 1 a 5 centímetros en comparación con la referencia. Estos datos demuestran que el sensor es bastante preciso en rangos de hasta un metro y mantiene una tolerancia aceptable para aplicaciones de detección de distancias mayores. La tabla \ref{tab:HCSR04_comparacion} resume las mediciones obtenidas.
+
+\vspace{1cm}
+
+\begin{table}[h]
+	\centering
+	\caption[Comparación de mediciones tomadas]{Comparación de mediciones tomadas.}
+	\begin{tabular}{c c c}    
+		\toprule
+		\textbf{Distancia de referencia (cm)} 	 & \textbf{Medición del HC-SR04 (cm)} 		& \textbf{Diferencia (cm)}  \\
+		\midrule
+		50 & 50 & 0 \\		
+		100 & 101 & +1 \\	
+		150 & 151 & +1 \\	
+            200 & 202 & +2 \\	
+            250 & 253 & +3 \\	
+            300 & 305 & +5 \\	
+		\bottomrule
+		\hline
+	\end{tabular}
+	\label{tab:HCSR04_comparacion}
+\end{table}
+
+\vspace{1cm}
+
+
